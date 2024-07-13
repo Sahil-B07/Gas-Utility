@@ -66,3 +66,9 @@ http://127.0.0.1:8000/customer_service/submit/ to submit a service request and h
 Open django admin - locate service request - here you can update the status of the service
 ![](assets/service-request.jpg)
 ![](assets/update-service.jpg)
+
+### Future scope
+
+1. Could upgrade it to a Django Rest Api, which is more efficient.
+
+2. For now I have kept the UI as simple as possible, but it can be enhanced.
