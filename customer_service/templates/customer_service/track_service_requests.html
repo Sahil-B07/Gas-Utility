@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Track Service Requests</title>
+
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    {% load static %}
+    <link href="{% static 'customer_service/style.css' %}" rel="stylesheet" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="heading">
+        <h1>Track Service Requests</h1>
+      </div>
+      <div class="table">
+        <table>
+          <thead>
+            <tr>
+              <th>Sr.No</th>
+              <th>Type</th>
+              <th>Status</th>
+              <th>Submitted At</th>
+              <th>Resolved At</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for request in service_requests %}
+            <tr>
+              <td>{{ request.request_type }}</td>
+
+              <td id="status">{{ request.status }}</td>
+
+              <td>{{ request.submitted_at }}</td>
+
+              {% if request.resolved_at %}
+              <td>{{ request.resolved_at }}</td>
+
+              {% else %}
+              <td>'Not Yet'</td>
+              {% endif %}
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </body>
+
+  <script>
+    const elements = document.querySelectorAll("td#status");
+    elements.forEach((element) => {
+      if (element.innerHTML == "Pending") {
+        element.style.color = "orange";
+      } else if (element.innerHTML == "Resolved") {
+        element.style.color = "green";
+      } else if (element.innerHTML == "Rejected") {
+        element.style.color = "red";
+      }
+    });
+  </script>
+</html>
