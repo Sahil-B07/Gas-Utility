@@ -6,7 +6,7 @@ from .forms import ServiceRequestForm
 
 @login_required
 def submit_service_request(request):
-    customer_account = CustomerAccount.objects.get_or_create(
+    customer_account, created = CustomerAccount.objects.get_or_create(
         user=request.user)
     if request.method == 'POST':
         form = ServiceRequestForm(request.POST, request.FILES)
@@ -22,7 +22,7 @@ def submit_service_request(request):
 
 @login_required
 def track_service_requests(request):
-    customer_account = CustomerAccount.objects.get_or_create(
+    customer_account, created = CustomerAccount.objects.get_or_create(
         user=request.user)
     service_requests = ServiceRequest.objects.filter(customer=customer_account)
     return render(request, 'customer_service/track_service_requests.html', {'service_requests': service_requests})
