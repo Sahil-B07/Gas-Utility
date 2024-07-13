@@ -72,3 +72,10 @@ Open django admin - locate service request - here you can update the status of t
 1. Could upgrade it to a Django Rest Api, which is more efficient.
 
 2. For now I have kept the UI as simple as possible, but it can be enhanced.
+
+## DEMO
+
+1. **Service Requests**
+   ![](assets/submit.png)
+2. **Request Tracking**
+   ![](assets/track.png)
